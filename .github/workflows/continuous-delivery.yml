@@ -1,0 +1,21 @@
+name: "[CD] Continuous Delivery"
+
+on:
+  push:
+    branches: [ main ]
+
+env:
+  VERCEL_ORG_ID: tY9eiY3E6oGsrF9iwsEf81on
+  VERCEL_PROJECT_ID: prj_UjECQZTDjtLowE6tA9e7xxwtQYqq
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v3
+        - name: "Debug"
+          run: "ls -la"
+        - name: "Install Dependencies"
+          run: "npm install"
+        - name: "Vercel"
+          run: "npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}"
