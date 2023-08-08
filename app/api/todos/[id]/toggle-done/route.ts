@@ -1,4 +1,13 @@
 import { todoController } from "@server/controller/todo";
+
+export async function PUT(
+  request: Request,
+  { params }: { params: { id: string } }
+) {
+  return todoController.toggleDone(request, params.id);
+}
+
+/* import { todoController } from "@server/controller/todo";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
@@ -15,4 +24,4 @@ export default async function handler(
       message: "Method not allowed",
     },
   });
-}
+} */
